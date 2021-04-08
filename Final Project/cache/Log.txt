@@ -1,0 +1,21 @@
+##### MAN = (manual input not script output.)
+
+MAN 2021-04-08 11:16AM Log 1:
+Starting final project today hopefully using python and the knowledge learnt will lead to my success.
+
+MAN 2021-04-08 11:22AM Log 2: 
+Accoured NASA API e7K9LCLA1dSndstU85ceydJDPiwRHkEOtCfV0aqQ
+
+MAN 2021-04-08 1:26PM Log 3:
+Had trouble with importing apod, possible solution updating python since I had an older verison.
+
+MAN 2021-04-08 2:06PM Log 4:
+GREAT NEWS!!! Figuried out that their was outdated pillow 7.3.1 trying to install which doesn't run with python 3.9 so I changed it to the updated verison
+of 8.2.0 and fix the problem, now on to fixing other bugs with my code.
+
+MAN 2021-04-08 3:03PM Log 5:
+Got SQLite Database to capture information of a file download and going to implament duplicant downloads to cancel.
+
+
+MAN 2021-04-08 3:26PM Log 6:
+Finished main code for now, taking break and going to work on the script more tommorow.

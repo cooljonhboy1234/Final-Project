@@ -16,6 +16,12 @@ of 8.2.0 and fix the problem, now on to fixing other bugs with my code.
 MAN 2021-04-08 3:03PM Log 5:
 Got SQLite Database to capture information of a file download and going to implament duplicant downloads to cancel.
 
-
 MAN 2021-04-08 3:26PM Log 6:
 Finished main code for now, taking break and going to work on the script more tommorow.
+
+2021-04-09 04:04PM Log 7: 
+I've add code where I can add to the log file without having to manually edit when I change something in the script.
+
+2021-04-09 04:45PM Log 8: 
+Finish Main code for python portion, now doing code for setting computer background.
+

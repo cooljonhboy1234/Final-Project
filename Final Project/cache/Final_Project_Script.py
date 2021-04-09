@@ -9,6 +9,7 @@
 #    
 #.-- .... -.-- / ..- / -- .- -.- . / -- . / -.-. --- -- -- . -. -
 from http import client
+import re
 import os
 import urllib
 import json
@@ -52,3 +53,25 @@ else:
 SQLite = open("SQLite_Database.txt", "r")
 print (SQLite.read())
 SQLite.close()
+
+#after everything is done can choose wether to add to the log or not.
+print ("Would you like to add to the log.txt of your work today? (Y/N) ")
+log_it = input().upper()
+
+#This will pre count the logs, so it knows what log number comes next
+Logging = open("Log.txt", "r")
+num_Check = len(re.findall("Log \d*", Logging.read()))
+Log_num = str(num_Check + 1)
+Logging.close()
+
+if (log_it == "Y"):
+
+    print ("\nTell me what you did? ")
+    user_input = input()
+   
+    Logging = open("Log.txt", "a")   
+    Logging.write(time_now.strftime("\n%Y-%m-%d %I:%M%p Log " + str(Log_num) + ": \n" + user_input))
+    Logging.close()
+else:
+    print("Goodbye!")
+    

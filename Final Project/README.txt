@@ -9,13 +9,10 @@ All updates, notes and logs will be posted in github.
 
 Link to github: https://github.com/cooljonhboy1234/Final-Project
 
-P.S. 
+if you get an error with the import request it just means you don't have that module installed.
 
-If you want to try this yourself just make sure when you do 
+Solution:
 
-git clone https://github.com/nasa/apod-api
+pip3 install requests
 
-then cd apod-api
-
-that you change Pillow to 8.2.0 inside the reqiurement txt file since it is using an older verison of Pillow 7.1.2
-
+that should do the trick and the script should work!

@@ -25,3 +25,22 @@ I've add code where I can add to the log file without having to manually edit wh
 2021-04-09 04:45PM Log 8: 
 Finish Main code for python portion, now doing code for setting computer background.
 
+2021-04-11 11:11AM Log 9: 
+Ran program had a little error with the url of the image. Soloution changed get_hdurl to get_url
+
+2021-04-14 12:27PM Log 10: 
+I missed up, make your own Api you dummy!
+
+2021-04-14 04:19PM Log 11: 
+I fixed my code a created my very own api handler instead of using nasas apod_api handler, and tuned it to my script.
+
+MAN 2021-04-14 4:22PM Log 12:
+fixed formating for logging download information of the image on the txt file verison of SQLite database. Reminder that isn't the real SQL database file,
+but more of a Download logger/track, actual I'm gonna change the file name so its more suitable for that.
+
+2021-04-14 04:40PM Log 13: 
+Gonna finally work on the powershell script which will run all the scripts and then taking the image of the day and setting it to my background!
+
+2021-04-14 05:07PM Log 14: 
+Add some cool information about the image of the day, each time you download a new image of the day it will give you some information behind the image! Alright back to work on my powershell script.
+

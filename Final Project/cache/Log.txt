@@ -44,3 +44,15 @@ Gonna finally work on the powershell script which will run all the scripts and t
 2021-04-14 05:07PM Log 14: 
 Add some cool information about the image of the day, each time you download a new image of the day it will give you some information behind the image! Alright back to work on my powershell script.
 
+2021-04-14 08:33PM Log 15: 
+About half way done the powershell script gonna manually add a log to explain what happen.
+
+MAN 2021-04-14 08:45PM Log 16: 
+GOOD NEWS I JUST FIXED A HUGE PROBLEM WITH MY POWERSHELL SCRIPT! Basically the issues wasn't with setting the desktop background screen which was easily fixed
+by just retyping sleep -Seconds 1 | RUNDLL32.EXE USER32.DLL,UpdatePerUserSystemParameters ,1 ,True. It was that the file run_this which is the powershell script,
+it wasn't placed where the rest of the processes are, which made a big fuss since powershell can get annyoing... but no biggy it was the worlds most simplest fix
+by moving the run file to the cache folder it fixed everything, wish i figured that one out before spending 3-4 hours on trying to figure out what the problem was.
+Oh yea also the powershell script is pretty sweet, it can tell you if the wallpaper is correclty set by printing out HKUC:Control Panel\Desktop and from their you can
+iditify if the image is actual set to the background and their is no need to log out and login to switch background it does it automatically. Now to take break before 
+I die of over coding OC == OD.
+

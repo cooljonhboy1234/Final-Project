@@ -86,3 +86,6 @@ Tweeked up on my code fixing a little regex error that wasn't capturing '-' Plan
 I've manged to fix rundll32 and now the run_this script will always change the background to the image of the day, I move the logging script into a script by its self. 
 I'm gonna add to run_script to repeat the code each day by it self.
 
+2021-04-15 10:14PM Log 20: 
+I've add the automatic run code feature, just leave powershell running in the background and it will automatically run at the same time the script was run at the pervoius day.
+

@@ -10,12 +10,6 @@
 #    
 #.-- .... -.-- / ..- / -- .- -.- . / -- . / -.-. --- -- -- . -. -
 
-#Creating SQL database if it doesn't exists
-Start-Process py -ArgumentList ".\SQL_Script.py"
-#Runnes download image script before setting it to the background.
-Start-Process py -ArgumentList ".\Final_Project_Script.py" -NoNewWindow -wait
-
-
 
 #This function is to let you see if the image of the day has been properly setup in wallpaper inside th HKCU registry.
 function Test-RegistryValue {
@@ -65,20 +59,36 @@ Sleep -seconds 5
          Get-ItemProperty -path "HKCU:\Control Panel\Desktop" 
 }
 
+$days = Read-Host -Prompt 'How many days would you like the code to run'
 
+Write-Output "Mark the time since the code will run in the next 24h again."
 
-#getting newest image of the day
-$NewestImage = Get-ChildItem -Path '.\' -Filter '*.jpg?' | sort LastWriteTime | select -last 1 
+#This is the loop to do the script at a selected time
+for (; $days -ne 0; $days-- )
+{
+    Write-Output "The current time running code at: " 
+    Get-Date 
+    #Creating SQL database if it doesn't exists
+    Start-Process py -ArgumentList ".\SQL_Script.py"
+    #Runnes download image script before setting it to the background.
+    Start-Process py -ArgumentList ".\Final_Project_Script.py" -NoNewWindow -wait
 
-#setting the path to newest image of the day
-$PathTo = Join-Path -Path 'C:\Users\jonna\OneDrive\Desktop\scripting APP\Final Project\cache' -ChildPath $NewestImage
+    #getting newest image of the day
+    $NewestImage = Get-ChildItem -Path '.\' -Filter '*.jpg?' | sort LastWriteTime | select -last 1 
 
-#Recall function made earlier.
-Set-WallPaper -ApodImage $PathTo
+    #setting the path to newest image of the day
+    $PathTo = Join-Path -Path 'C:\Users\jonna\OneDrive\Desktop\scripting APP\Final Project\cache' -ChildPath $NewestImage
 
-#logging script activates after everythings has been ran.
-Start-Process py -ArgumentList ".\Log_Script.py" -NoNewWindow -wait
+    #Recall function made earlier.
+    Set-WallPaper -ApodImage $PathTo
 
+    #logging script activates after everythings has been ran.
+    Start-Process py -ArgumentList ".\Log_Script.py" -NoNewWindow -wait
+
+    Write-Output "Remaining days left tell code stops: " $days" Days left till script stops."
+
+    sleep -Seconds 86400
+}
 
 
 

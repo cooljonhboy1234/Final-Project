@@ -19,6 +19,7 @@ import json
 import datetime
 from PIL import Image
 import requests
+import webbrowser
 
 #captures time of download for data logging
 time_now = datetime.datetime.now()
@@ -29,9 +30,9 @@ myCursor = myConnection.cursor()
 
 ApodApi = client.HTTPSConnection('api.nasa.gov', 443)
 
-ApodApiKey = "e7K9LCLA1dSndstU85ceydJDPiwRHkEOtCfV0aqQ"
+ApodApiKey = ""
 
-ApodApi.request('GET', '/planetary/apod?api_key=' + ApodApiKey)
+ApodApi.request('GET', '/planetary/apod?api_key=e7K9LCLA1dSndstU85ceydJDPiwRHkEOtCfV0aqQ')
 
 response = ApodApi.getresponse()
 
@@ -41,22 +42,32 @@ define = json.loads(ApodData)
 
 #Format the sql into text to be used for string related code
 explanation = "{0}".format(define['explanation'])
-hdurl = "{0}".format(define['hdurl'])
+hdurl = "{0}".format(define.get('hdurl', 'N/A'))
 title = "{0}".format(define['title'])
+media_type = "{0}".format(define['media_type'])
+url = "{0}".format(define['url'])
 
 addApodQuery = """INSERT INTO apod(
 explanation,
+media_type,
+title,
 hdurl,
-title)
-VALUES (?,?,?);"""
+url)
+VALUES (?,?,?,?,?);"""
 
 myApod = (
 explanation,
+media_type,
+title,
 hdurl,
-title
+url
 )
-image_name = re.search(r"((\w*[-]?\w*).jpg$)", hdurl)
-found_name = image_name.group(2)
+try:
+    image_name = re.search(r"((\w*[-]?\w*).jpg$)", hdurl)
+    found_name = image_name.group(2)
+except AttributeError:
+    print("Continue")
+
 
 #creating a function called download_image
 def download_image(response):
@@ -67,21 +78,27 @@ def download_image(response):
             
     else:
         return FileExistsError
+        
 
 myCursor.execute(addApodQuery, myApod)
 #This allows for only distinct query to be capture, i.e. no duplicants
-myCursor.execute("SELECT DISTINCT explanation, hdurl, title FROM apod")
+myCursor.execute("SELECT DISTINCT explanation, media_type, title, hdurl, url FROM apod")
 
 myConnection.commit()
 myConnection.close()
 #end of sql code
 
-
-
 #path is where the image is located
-Path = '.\\' + image_name.group(1)
+try:
+    Path = '.\\' + image_name.group(1)
+except AttributeError:
+    print ("No path to image.")
+ 
 
-if (os.path.exists(Path) == True):
+if (media_type == 'video'):
+    print ("Today's image of the day is actually a youtube video and won't be uploaded to your computer background. Enjoy the video!!!")
+    webbrowser.open(url)
+elif (os.path.exists(Path) == True):
     print ("The Image of the day is already been downloaded")
 else:
     #Downloads actual image

@@ -64,7 +64,7 @@ $days = Read-Host -Prompt 'How many days would you like the code to run'
 Write-Output "Mark the time since the code will run in the next 24h again."
 
 #This is the loop to do the script at a selected time
-for (; $days -ne 0; $days-- )
+for ($i = [int]$days; $i -ge 0; $i-- )
 {
     Write-Output "The current time running code at: " 
     Get-Date 
@@ -85,9 +85,15 @@ for (; $days -ne 0; $days-- )
     #logging script activates after everythings has been ran.
     Start-Process py -ArgumentList ".\Log_Script.py" -NoNewWindow -wait
 
-    Write-Output "Remaining days left tell code stops: " $days" Days left till script stops."
-
-    sleep -Seconds 86400
+    Write-Output "Remaining days left tell code stops: " $i" Days left till script stops. (Force Stop Crtl+C)"
+    if ($i -eq '0')
+    {
+       Write-Output "Script has finished Running"
+    }
+    else
+    {
+         sleep -Seconds 86400
+    }
 }
 
 

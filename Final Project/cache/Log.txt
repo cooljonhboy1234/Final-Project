@@ -89,3 +89,12 @@ I'm gonna add to run_script to repeat the code each day by it self.
 2021-04-15 10:14PM Log 20: 
 I've add the automatic run code feature, just leave powershell running in the background and it will automatically run at the same time the script was run at the pervoius day.
 
+2021-04-16 09:30AM Log 21: 
+ran code today everything seems to be good!
+
+2021-04-16 02:27PM Log 22: 
+Tweeked up my final script, now can detec if image of the day is a video or not.
+
+2021-04-16 02:34PM Log 23: 
+Add an if else statement to run this script for better detection if you only want to run code once.
+

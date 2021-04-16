@@ -55,7 +55,7 @@ explanation,
 hdurl,
 title
 )
-image_name = re.search(r"((\w*).jpg$)", hdurl)
+image_name = re.search(r"((\w*[-]?\w*).jpg$)", hdurl)
 found_name = image_name.group(2)
 
 #creating a function called download_image
@@ -79,7 +79,7 @@ myConnection.close()
 
 
 #path is where the image is located
-Path = 'C:/Users/jonna/OneDrive/Desktop/scripting APP/Final Project/cache/' + image_name.group(1)
+Path = '.\\' + image_name.group(1)
 
 if (os.path.exists(Path) == True):
     print ("The Image of the day is already been downloaded")
@@ -102,24 +102,5 @@ SQLite.close()
 Fix_it_Regex = re.match(r"((?:.*\.))", explanation)
 
 print (title + ", is the image of the day.\nHere are some cool facts about the image:\n" + Fix_it_Regex.group(1))
-#after everything is done can choose wether to add to the log or not.
-print ("Would you like to add to the log.txt of your work today? (Y/N) ")
-log_it = input().upper()
 
-#This will pre count the logs, so it knows what log number comes next
-Logging = open("Log.txt", "r")
-num_Check = len(re.findall("Log \d*", Logging.read()))
-Log_num = str(num_Check + 1)
-Logging.close()
-
-if (log_it == "Y"):
-
-    print ("\nTell me what you did? ")
-    user_input = input()
-   
-    Logging = open("Log.txt", "a")   
-    Logging.write(time_now.strftime("%Y-%m-%d %I:%M%p Log " + str(Log_num) + ": \n" + user_input + "\n\n"))
-    Logging.close()
-else:
-    print("Goodbye!")
     

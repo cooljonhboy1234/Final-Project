@@ -56,3 +56,33 @@ Oh yea also the powershell script is pretty sweet, it can tell you if the wallpa
 iditify if the image is actual set to the background and their is no need to log out and login to switch background it does it automatically. Now to take break before 
 I die of over coding OC == OD.
 
+2021-04-15 01:20PM Log 17: 
+Running todays image of the day!
+
+2021-04-15 07:21PM Log 18: 
+Tweeked up on my code fixing a little regex error that wasn't capturing '-' Planing to actual make a seperate script to run the logging portion of the code.
+
+2021-04-15 08:56PM Log 19: 
+             ,.,_,.
+           ,.''     \
+          '          '    GOOD NEWS EVERYBODY!      
+        /'           |
+      /_-            |    Prof. Hubert Farnsworh
+    .'__      _-_    :
+   /__        _-_    :
+  ,_,._     ,_,._~   |___
+.'-_ '.'.-.'-_ '.'._-^_  '.
+|  -_ |.| |  -_ | | / |
+ ',_,' /  _',_,'_'  /|/
+  .  .|    ',. ._-^  |'
+   ' '.   .'  '.    '/|
+ ,'    '''    __'.  \/ -_
+'_=-..--..--'^  '', : \. '.
+     ',    .  ,   ,' \/ |  |-_
+     / ',.. '. '. ,../  |  |  '-_
+   ,'  . \'.:.''''    .''. '.    \.
+ ,'    | |\       ,../   |  |      ',
+ |     ' ''.,.''''       ', ',       | 
+I've manged to fix rundll32 and now the run_this script will always change the background to the image of the day, I move the logging script into a script by its self. 
+I'm gonna add to run_script to repeat the code each day by it self.
+

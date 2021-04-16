@@ -9,9 +9,15 @@
 #
 #    
 #.-- .... -.-- / ..- / -- .- -.- . / -- . / -.-. --- -- -- . -. -
+
+#Creating SQL database if it doesn't exists
+Start-Process py -ArgumentList ".\SQL_Script.py"
+#Runnes download image script before setting it to the background.
 Start-Process py -ArgumentList ".\Final_Project_Script.py" -NoNewWindow -wait
 
-#This function is to let you see if the image of the day 
+
+
+#This function is to let you see if the image of the day has been properly setup in wallpaper inside th HKCU registry.
 function Test-RegistryValue {
 
 param (
@@ -40,34 +46,40 @@ return $false
 #function chages background of desktop
 function Set-WallPaper ($ApodImage)
 {
-
-   #removes any prevouis background set
-     Remove-ItemProperty -path "HKCU:\Control Panel\Desktop" -name WallPaper      
+Write-Output "10 seconds for the code to finish running, please be patient."
+Sleep -seconds 1
+   #removes any background perviously 
+     Remove-ItemProperty -path "HKCU:\Control Panel\Desktop" -name WallPaper     
    #sets a new background to the image            
      set-itemproperty -path "HKCU:\Control Panel\Desktop" -name WallPaper -value $ApodImage
       
-
-Sleep -seconds 1
-
-     RUNDLL32.EXE USER32.DLL,UpdatePerUserSystemParameters ,1 ,True
+Sleep -seconds 5
+    #update to our rundll32 problem, if it is repeated multiple times it will force the background to chage i.e. PROBLEM SOLVED!
+    for ($i = 0; $i -le 20; $i++)
+    {
+        RUNDLL32.EXE USER32.DLL,UpdatePerUserSystemParameters ,1 ,True
+    }
+     
 
 
          Get-ItemProperty -path "HKCU:\Control Panel\Desktop" 
 }
 
-#Start-Process powershell -ArgumentList "-file C:\Users\jonna\OneDrive\Desktop\scripting APP\Final Project\cache\SQL_Script.py"
+
 
 #getting newest image of the day
-$NewestImage = Get-ChildItem -Path 'C:\Users\jonna\OneDrive\Desktop\scripting APP\Final Project\cache' -Filter '*.jpg?' | sort LastWriteTime | select -last 1 
+$NewestImage = Get-ChildItem -Path '.\' -Filter '*.jpg?' | sort LastWriteTime | select -last 1 
 
 #setting the path to newest image of the day
-$PathTo = Join-Path -Path 'C:\Users\jonna\OneDrive\Desktop\scripting APP\Final Project\' -ChildPath $NewestImage
+$PathTo = Join-Path -Path 'C:\Users\jonna\OneDrive\Desktop\scripting APP\Final Project\cache' -ChildPath $NewestImage
 
 #Recall function made earlier.
 Set-WallPaper -ApodImage $PathTo
 
-#Fixed issues with Rundll32.exe not refershing by just inserting it again after 
-sleep -Seconds 1 | RUNDLL32.EXE USER32.DLL,UpdatePerUserSystemParameters ,1 ,True
+#logging script activates after everythings has been ran.
+Start-Process py -ArgumentList ".\Log_Script.py" -NoNewWindow -wait
+
+
 
 
 

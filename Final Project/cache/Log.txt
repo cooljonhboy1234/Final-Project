@@ -98,3 +98,9 @@ Tweeked up my final script, now can detec if image of the day is a video or not.
 2021-04-16 02:34PM Log 23: 
 Add an if else statement to run this script for better detection if you only want to run code once.
 
+2021-04-17 04:51PM Log 24: 
+Code ran today succesfully without any error. Very good! 
+
+2021-04-18 10:35AM Log 25: 
+No problems with code, starting to look really good!
+

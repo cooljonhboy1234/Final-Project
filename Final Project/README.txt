@@ -16,3 +16,12 @@ Solution:
 pip3 install requests
 
 that should do the trick and the script should work!
+
+Please note:
+
+In the RUN_THIS.ps1
+
+where $PathTo, change the path to were the script is placed on you computer.
+
+Example.
+$PathTo = Join-Path -Path 'C:\change\this\to\file\location\cache' -ChildPath $NewestImage

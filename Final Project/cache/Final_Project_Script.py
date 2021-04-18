@@ -9,7 +9,6 @@
 #    
 #.-- .... -.-- / ..- / -- .- -.- . / -- . / -.-. --- -- -- . -. -
 from http import client
-import sqlite3
 from pprint import pprint
 import sqlite3
 import re

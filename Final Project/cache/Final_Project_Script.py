@@ -62,8 +62,9 @@ hdurl,
 url
 )
 try:
-    image_name = re.search(r"((\w*[-]?\w*).jpg$)", hdurl)
-    found_name = image_name.group(2)
+    image_name = re.search(r"https://apod.nasa.gov/apod/image/2104/(?:(.*)(\....))", hdurl)
+    #image_name = re.search(r"((\w*[-]?\w*).jpg$)", hdurl)
+    found_name = image_name.group(1)
 except AttributeError:
     print("Continue")
 
@@ -89,7 +90,7 @@ myConnection.close()
 
 #path is where the image is located
 try:
-    Path = '.\\' + image_name.group(1)
+    Path = '.\\' + image_name.group(1) + image_name.group(2).lower()
 except AttributeError:
     print ("No path to image.")
  
@@ -109,7 +110,7 @@ else:
     #creates the database file to keep track of all logs inside txt file for better readings
     SQLite = open("Download_Log.txt", "a")
     SQLite.write("Image of the day downloaded at " + time_now.strftime("%Y-%m-%d %I:%M%p") + " Size of file is " + str(size_image) + " Bytes.\n")
-    SQLite.write("File name is: " + image_name.group(1) + "\n")
+    SQLite.write("File name is: " + image_name.group(1) + image_name.group(2).lower() + "\n")
     SQLite.close()
 SQLite = open("Download_Log.txt", "r")
 print (SQLite.read())

@@ -110,3 +110,6 @@ Ran code today nothing wronge, might makes some tweeks depends. Thats all!
 2021-04-22 09:11AM Log 27: 
 How some errors with regex but fixed so no matter what is contained in it it will always now pick up correctly.
 
+2021-04-25 03:03PM Log 28: 
+coudl works! No new issues discovered!
+
